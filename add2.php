@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <?php
-    include("conn2.php");
+    include("conn.php");
     ?>
 <head>
     <!-- Latest compiled and minified CSS -->
@@ -13,12 +13,12 @@
 <style>
     body {
         font-family: "Mitr", serif;
-        font-weight: 700px;
+        font-weight: 500px;
         font-style: normal;
-        margin-left: 300px;
-        margin-right: 300px;
+        margin-left: 200px;
+        margin-right: 100px;
         margin-top: 100px;
-        text-align: center;
+      
     }
 
 </style>
@@ -33,7 +33,7 @@
   <div class="row mb-3">
     <label for="inputname" class="col-sm-2 col-form-label">ชื่อหนังสือ</label>
     <div class="col-sm-3">
-      <input type="taxt" class="form-control" id="inputname" name="Name">
+      <input type="taxt" class="form-control" id="inputname"  name="Name">
     </div>
   </div>
   <div class="row mb-3">
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO book (Name,Publisher,Genre,Price)
         VALUES ('$name', '$Publisher', '$Genre','$Price')";
         // use exec() because no results are returned
-        $conn2->exec($sql);
+        $conn->exec($sql);
         echo "<div class='alert alert-success'>
         <strong>บันทึกสำเร็จ!</strong> คุณได้บันทึกข้อมูลเข้าใหม่ 1 รายการ.
         </div>";
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo $sql . "บันทึกข้อมูลผิดพลาด<br>" . $e->getMessage();
       }
       
-      $conn2 = null;
+      $conn = null;
 }
 ?>
 </body>
